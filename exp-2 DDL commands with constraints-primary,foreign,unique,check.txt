@@ -1,0 +1,102 @@
+mysql> use sunil;
+Database changed
+mysql> create table employee(empname varchar(20),empid int(20),empstate varchar(20));
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> desc employee;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| empname  | varchar(20) | YES  |     | NULL    |       |
+| empid    | int(20)     | YES  |     | NULL    |       |
+| empstate | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.17 sec)
+
+mysql> insert into employee values("kiran",5654,"ap");
+Query OK, 1 row affected (0.16 sec)
+
+mysql> insert into employee values("hithesh",3443,"tn");
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert into employee values("kesava",2323,"ap");
+Query OK, 1 row affected (0.14 sec)
+
+mysql> select*from employee;
++---------+-------+----------+
+| empname | empid | empstate |
++---------+-------+----------+
+| kiran   |  5654 | ap       |
+| hithesh |  3443 | tn       |
+| kesava  |  2323 | ap       |
++---------+-------+----------+
+3 rows in set (0.00 sec)
+
+mysql> alter table employee add primary key(empid);
+Query OK, 3 rows affected (0.37 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> desc employee;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| empname  | varchar(20) | YES  |     | NULL    |       |
+| empid    | int(20)     | NO   | PRI | 0       |       |
+| empstate | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.03 sec)
+
+mysql> create table income(incname varchar(20),incid int(20),incsalary int(20));
+Query OK, 0 rows affected (0.23 sec)
+
+mysql> desc income;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| incname   | varchar(20) | YES  |     | NULL    |       |
+| incid     | int(20)     | YES  |     | NULL    |       |
+| incsalary | int(20)     | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.13 sec)
+
+mysql> alter table income add foreign key (incid) references employee(empid);
+Query OK, 0 rows affected (0.33 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc course;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| courseno   | int(20)     | YES  | MUL | NULL    |       |
+| coursename | varchar(20) | YES  |     | NULL    |       |
+| coursefee  | int(20)     | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> alter table employee add unique key(empid);
+Query OK, 0 rows affected (0.55 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| stid   | int(20)     | NO   | PRI | 0       |       |
+| stname | varchar(20) | YES  |     | NULL    |       |
+| stage  | int(20)     | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
+
+mysql> select*from employee;
++---------+-------+----------+
+| empname | empid | empstate |
++---------+-------+----------+
+| kesava  |  2323 | ap       |
+| hithesh |  3443 | tn       |
+| kiran   |  5654 | ap       |
++---------+-------+----------+
+3 rows in set (0.00 sec)
+
+mysql> alter table employee add check(empid=2323);
+Query OK, 0 rows affected (0.09 sec)
+Records: 0  Duplicates: 0  Warnings: 0
