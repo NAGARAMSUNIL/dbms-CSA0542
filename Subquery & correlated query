@@ -1,13 +1,13 @@
 mysql> use sunil;
 Database changed
 mysql> show tables;
-+---------------+
-| Tables_in_nkk |
-+---------------+
-| course        |
-| mentees       |
-| student       |
-+---------------+
++----------------+
+| Tables_in_sunil|
++----------------+
+| course         |
+| mentees        |
+| student        |
++----------------+
 3 rows in set (0.00 sec)
 
 mysql> select*from mentees;
